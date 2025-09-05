@@ -1,7 +1,11 @@
+import { request } from "http"
 import z from "zod"
+import type { FastifyPluginAsyncZod } from "fastify-type-provider-zod"
+import { db } from "../database/client"
+import { tasks } from "../database/schema"
+import { eq } from "drizzle-orm"
 
-
-export const putTasks = async ( server ) =>{
+export const putTasks:FastifyPluginAsyncZod = async ( server ) =>{
     server.put('/tasks/:id',{
         schema:{
             tags:['tasks'],
@@ -23,6 +27,12 @@ export const putTasks = async ( server ) =>{
                 404: z.null().describe("Tarefa não encontrada") 
             }
         }
-    })
+    },  
+    async ( request, reply)=>{
+        const taskId = request.params.id;
+        const verifiTask = await db.select().from(tasks).where(  eq(tasks.id, taskId))
+        
+    }
+)
 
 }
