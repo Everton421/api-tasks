@@ -6,13 +6,13 @@ import { text } from "drizzle-orm/pg-core";
 import { uuid } from "drizzle-orm/pg-core";
 
 
-export const statusTask = pgEnum("status", ["pedente", "em-andamento", "concluido", "cancelado"]); 
+export const statusTask = pgEnum("status", ["pendente", "em-andamento", "concluido", "cancelado"]); 
 
 export const tasks = pgTable("tasks",{
     id: uuid().primaryKey().defaultRandom(),
     title:text().notNull(),
     description:text().notNull(),
-    status: statusTask().notNull().default("pedente"),
+    status: statusTask().notNull().default("pendente"),
     createdAt: timestamp().notNull().defaultNow(),
     updatedAt: timestamp().notNull().defaultNow(),
 })

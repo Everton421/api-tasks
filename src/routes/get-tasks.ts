@@ -2,7 +2,6 @@
 import type { FastifyPluginAsyncZod } from "fastify-type-provider-zod"
  import { tasks } from "../database/schema.ts"
 import z from "zod"
-import { randomBytes, randomUUID } from "node:crypto"
 import { db } from "../database/client.ts"
 import { asc } from "drizzle-orm"
  

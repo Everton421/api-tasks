@@ -29,6 +29,7 @@
     "@types/node": "^24.3.1",
     "@types/pg": "^8.15.5",
     "drizzle-kit": "^0.31.4",
+    "pino-pretty": "^7.0.0",
     "tsx": "^4.20.5",
     "typescript": "^5.9.2"
   }

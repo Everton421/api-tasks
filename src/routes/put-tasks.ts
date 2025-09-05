@@ -1,8 +1,8 @@
 import { request } from "http"
 import z from "zod"
 import type { FastifyPluginAsyncZod } from "fastify-type-provider-zod"
-import { db } from "../database/client"
-import { tasks } from "../database/schema"
+import { db } from "../database/client.ts"
+import { tasks } from "../database/schema.ts"
 import { eq } from "drizzle-orm"
 
 export const putTasks:FastifyPluginAsyncZod = async ( server ) =>{
@@ -12,6 +12,11 @@ export const putTasks:FastifyPluginAsyncZod = async ( server ) =>{
             summary:'Atualizar uma tarefa ',
             params: z.object({
                 id: z.uuid()
+            }),
+            body: z.object({
+                title: z.string().min(2).max(100),
+                description: z.string().min(2).max(1000),
+                status: z.enum(["pendente", "em-andamento", "concluido", "cancelado"])
             }),
             response:{
                 200: z.object({
@@ -30,9 +35,25 @@ export const putTasks:FastifyPluginAsyncZod = async ( server ) =>{
     },  
     async ( request, reply)=>{
         const taskId = request.params.id;
+        
         const verifiTask = await db.select().from(tasks).where(  eq(tasks.id, taskId))
         
-    }
-)
+        if(verifiTask.length > 0 ){
+
+            const updateTask = await db.update(tasks).set({
+                title: request.body.title,
+                description: request.body.description,
+                status: request.body.status,
+                updatedAt: new Date()
+            })
+                return reply.status(200).send({ task:   { id:taskId , title: request.body.title, description: request.body.description,
+                    status: request.body.status, createdAt: verifiTask[0].createdAt, updatedAt: new Date()
+                }  })
+        }
+
+             return reply.status(404).send( )
+
+
+    })
 
 }

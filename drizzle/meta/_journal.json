@@ -15,6 +15,13 @@
       "when": 1757083370564,
       "tag": "0001_previous_centennial",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1757103589566,
+      "tag": "0002_watery_anthem",
+      "breakpoints": true
     }
   ]
 }
