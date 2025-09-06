@@ -8,10 +8,18 @@ async function seed(){
     
     const taskExample = await db.insert( tasks ).values( 
         [
-            {
-                title: faker.lorem.words(4),
-                description: faker.lorem.words(4)
-            }
+            { title: faker.lorem.words(4), description: faker.lorem.words(4), priority:'low'},
+            { title: faker.lorem.words(4), description: faker.lorem.words(4), priority:'high'},
+            { title: faker.lorem.words(4), description: faker.lorem.words(4), priority:'medium' },
+            { title: faker.lorem.words(4), description: faker.lorem.words(4), priority:'low'},
+            { title: faker.lorem.words(4), description: faker.lorem.words(4), priority:'low'},
+            { title: faker.lorem.words(4), description: faker.lorem.words(4), priority:'low'},
+            { title: faker.lorem.words(4), description: faker.lorem.words(4), priority:'low'},
+            { title: faker.lorem.words(4), description: faker.lorem.words(4), priority:'low'},
+            { title: faker.lorem.words(4), description: faker.lorem.words(4), priority:'low'},
+            { title: faker.lorem.words(4), description: faker.lorem.words(4), priority:'low'}
+
+        
         ]
      ).returning()
 }

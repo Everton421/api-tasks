@@ -5,6 +5,7 @@ import fastifySwagger from "@fastify/swagger";
 import { jsonSchemaTransform, serializerCompiler, validatorCompiler , type ZodTypeProvider} from "fastify-type-provider-zod";
 import scalarApiReference from "@scalar/fastify-api-reference";
 import { putTasks } from "./routes/put-tasks.ts";
+import { createTasks } from "./routes/create-tasks.ts";
  
 
  const server = fastify({
@@ -41,6 +42,8 @@ server.register(scalarApiReference,{
 
 server.register(getTasks)
 server.register(putTasks)
+server.register(createTasks)
+
 
  export { server }
   

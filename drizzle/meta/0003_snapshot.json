@@ -1,6 +1,6 @@
 {
-  "id": "81b84020-fd7b-4801-a13b-35570422ad85",
-  "prevId": "0cdf62ca-0746-4802-9a50-7757a024a368",
+  "id": "4ba71b99-8710-4cb1-be65-b5f1896b2535",
+  "prevId": "81b84020-fd7b-4801-a13b-35570422ad85",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -35,6 +35,14 @@
           "notNull": true,
           "default": "'pendente'"
         },
+        "priority": {
+          "name": "priority",
+          "type": "priority",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'low'"
+        },
         "createdAt": {
           "name": "createdAt",
           "type": "timestamp",
@@ -60,6 +68,15 @@
     }
   },
   "enums": {
+    "public.priority": {
+      "name": "priority",
+      "schema": "public",
+      "values": [
+        "high",
+        "low",
+        "medium"
+      ]
+    },
     "public.status": {
       "name": "status",
       "schema": "public",
