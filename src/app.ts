@@ -7,6 +7,7 @@ import scalarApiReference from "@scalar/fastify-api-reference";
 import { putTasks } from "./routes/put-tasks.ts";
 import { createTasks } from "./routes/create-tasks.ts";
  
+import cors from '@fastify/cors'
 
  const server = fastify({
    logger:{
@@ -36,6 +37,7 @@ server.register(scalarApiReference,{
    routePrefix:'/docs',
  })
 
+   server.register(cors)
  server.setSerializerCompiler(serializerCompiler )
 
  server.setValidatorCompiler(validatorCompiler)
