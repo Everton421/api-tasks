@@ -8,6 +8,7 @@ import { putTasks } from "./routes/put-tasks.ts";
 import { createTasks } from "./routes/create-tasks.ts";
  
 import cors from '@fastify/cors'
+import { LoginRoute } from "./routes/login.ts";
 
  const server = fastify({
    logger:{
@@ -45,7 +46,7 @@ server.register(scalarApiReference,{
 server.register(getTasks)
 server.register(putTasks)
 server.register(createTasks)
-
+server.register(LoginRoute)
 
  export { server }
   

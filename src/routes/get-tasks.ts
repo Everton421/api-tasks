@@ -4,13 +4,20 @@ import type { FastifyPluginAsyncZod } from "fastify-type-provider-zod"
 import z from "zod"
 import { db } from "../database/client.ts"
 import { and, asc, ilike,count, SQL } from "drizzle-orm"
+import { checkJWT } from "../hooks/check-request-jwt.ts"
  
 
 export const getTasks:FastifyPluginAsyncZod = async (server)   => {
        server.get('/tasks',   { 
+        preHandler:[
+            checkJWT
+        ],
     schema:{
         tags:['tasks'],
         summary:"listar tarefas",
+        headers: z.object({
+            authorization: z.string()
+        }),
         querystring: z.object({
             search: z.string().optional(),
             orderBy: z.enum(['id','title','status']).optional().default('title'),

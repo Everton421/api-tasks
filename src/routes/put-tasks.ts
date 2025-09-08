@@ -4,14 +4,21 @@ import type { FastifyPluginAsyncZod } from "fastify-type-provider-zod"
 import { db } from "../database/client.ts"
 import { priorityTask, tasks } from "../database/schema.ts"
 import { eq } from "drizzle-orm"
+import { checkJWT } from "../hooks/check-request-jwt.ts"
 
 export const putTasks:FastifyPluginAsyncZod = async ( server ) =>{
     server.put('/tasks/:id',{
+         preHandler:[
+                    checkJWT
+                ],
         schema:{
             tags:['tasks'],
             summary:'Atualizar uma tarefa ',
             params: z.object({
-                id: z.uuid()
+                id: z.uuid(),
+            }),
+            headers: z.object({
+                authorization: z.string()
             }),
             body: z.object({
                 title: z.string().min(2).max(100),
