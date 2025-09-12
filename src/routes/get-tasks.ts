@@ -46,7 +46,7 @@ export const getTasks:FastifyPluginAsyncZod = async (server)   => {
             const { orderBy, page, search } = request.query
 
                 const conditions : SQL[] =[]
-
+            const limit = 10;
                 if( search){
                     conditions.push( ilike( tasks.title, `%${search}%`))
                 }
@@ -56,8 +56,8 @@ export const getTasks:FastifyPluginAsyncZod = async (server)   => {
                 .from(tasks)
                 .where( and( ...conditions)) 
                 .groupBy( tasks.id )
-                .limit(10)
-                .offset(( page - 1 ) * 2 )
+                .limit(limit)
+                .offset(( page - 1 ) * limit )
                 .orderBy( asc(tasks[orderBy])),
 
                 db.$count(tasks, and( ...conditions))
