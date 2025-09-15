@@ -22,6 +22,16 @@ import { LoginRoute } from "./routes/login.ts";
       }
    }
   ).withTypeProvider<ZodTypeProvider>()
+
+  server.register(cors,{
+   origin:'*',
+   methods:['GET','POST','PUT','DELETE','PATCH', 'OPTIONS'],
+   allowedHeaders:'*',
+   credentials: true,
+   exposedHeaders:'*'
+
+  })
+
  
 server.register(fastifySwagger,{
    openapi:{
@@ -38,7 +48,6 @@ server.register(scalarApiReference,{
    routePrefix:'/docs',
  })
 
-   server.register(cors)
  server.setSerializerCompiler(serializerCompiler )
 
  server.setValidatorCompiler(validatorCompiler)
