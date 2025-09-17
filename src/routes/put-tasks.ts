@@ -56,6 +56,9 @@ export const putTasks:FastifyPluginAsyncZod = async ( server ) =>{
                 status: request.body.status,
                 updatedAt: new Date()
             })
+            .where(eq( tasks.id, taskId))
+             
+
                 return reply.status(200).send({ task:   { id:taskId , priority:request.body.priority ,  title: request.body.title, description: request.body.description,
                     status: request.body.status, createdAt: verifiTask[0].createdAt, updatedAt: new Date()
                 }  })
