@@ -1,0 +1,1 @@
+CREATE DATABASE teste_database_tarefas;

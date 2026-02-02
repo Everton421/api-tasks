@@ -8,7 +8,8 @@
     "dev": "node --env-file .env --watch --experimental-strip-types src/server.ts",
     "db:migrate": "drizzle-kit migrate",
     "db:generate": "drizzle-kit generate",
-    "db:seed": "tsx --env-file .env src/database/seed.ts"
+    "db:seed": "tsx --env-file .env src/database/seed.ts",
+    "teste:migrate": "dotenv --env-file=.env.test -- drizzle-kit-migrate"
   },
   "keywords": [],
   "author": "",
@@ -33,6 +34,7 @@
     "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^24.3.1",
     "@types/pg": "^8.15.5",
+    "dotenv-cli": "^11.0.0",
     "drizzle-kit": "^0.31.4",
     "pino-pretty": "^7.0.0",
     "tsx": "^4.20.5",
