@@ -5,36 +5,8 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1757033782551,
-      "tag": "0000_smiling_dormammu",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1757083370564,
-      "tag": "0001_previous_centennial",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1757103589566,
-      "tag": "0002_watery_anthem",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "7",
-      "when": 1757184311177,
-      "tag": "0003_stale_supreme_intelligence",
-      "breakpoints": true
-    },
-    {
-      "idx": 4,
-      "version": "7",
-      "when": 1757328980132,
-      "tag": "0004_abnormal_terror",
+      "when": 1770077528304,
+      "tag": "0000_new_moon_knight",
       "breakpoints": true
     }
   ]
