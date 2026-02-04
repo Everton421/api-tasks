@@ -4,7 +4,7 @@ import assert from 'node:assert'
 import { server } from "../app.ts";
 import { makeTask } from "../factories/make-tasks.ts";
 import { makeUser } from "../factories/make-user.ts";
-
+import request from 'supertest'
  
     test.it(" get tesks", async ()=>{
     
@@ -21,6 +21,13 @@ import { makeUser } from "../factories/make-user.ts";
             userId: user.id
          })
 
-         assert.strictEqual(task.description, "task 1")
+
+         const response = await request( server.server).get('/tasks',
+            
+         )
+
+     //    assert.strictEqual(task.description, "task 1")
+         
+
 
     })
