@@ -4,14 +4,14 @@ import { users } from '../database/schema.ts'
 import { faker, fakerKA_GE } from '@faker-js/faker'
 
 type user = {
-    id:UUID
+    id: UUID
      name: string
      email: string
      password: string
      role:  'suport' |'developer'
 }
 
-export async function makeUser(user?:user  ): Promise< user >{
+export async function makeUser(user?:user  ) {
         const resultInsertUser = await db.insert(users).values(
             {
                 email:  user?.email ?? faker.internet.email(),
@@ -22,5 +22,5 @@ export async function makeUser(user?:user  ): Promise< user >{
             }
         ).returning()
 
-        return resultInsertUser[0] as user;
+        return resultInsertUser[0] as user   ;
 } 

@@ -11,7 +11,7 @@
     "db:seed": "tsx --env-file .env src/database/seed.ts",
     "teste:migrate": "dotenv -e .env.test -- drizzle-kit migrate",
     "teste:push": "dotenv -e .env.test -- drizzle-kit push --force",
-    "teste:task":"node --env-file=.env.test --experimental-strip-types  src/routes/get-tasks.test.ts"
+    "teste:task": "node --env-file=.env.test --experimental-strip-types  src/routes/get-tasks.test.ts"
   },
   "keywords": [],
   "author": "",
@@ -37,6 +37,7 @@
     "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^24.3.1",
     "@types/pg": "^8.15.5",
+    "@types/supertest": "^6.0.3",
     "dotenv-cli": "^11.0.0",
     "drizzle-kit": "^0.31.8",
     "pino-pretty": "^7.0.0",
