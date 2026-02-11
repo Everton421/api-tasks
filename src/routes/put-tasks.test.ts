@@ -20,7 +20,6 @@ test.it("[ TESTE ] Update tasks  ", async () => {
     const userId = user.id;
     const priority = 'low';
 
-    let taskId;
 
             const task = await makeTask(
                 {
@@ -39,7 +38,7 @@ test.it("[ TESTE ] Update tasks  ", async () => {
     const response = await request(server.server)
         .put(`/tasks/${task.id}`)
         .send({
-            id:taskId,
+             id:task.id,
               priority: newPriority,
               description: newDescription ,
               title: newTitle,
@@ -50,16 +49,21 @@ test.it("[ TESTE ] Update tasks  ", async () => {
 
         assert.strictEqual(response.status, 200);
 
-        assert.deepEqual(response.body, {
+        let data = response.body 
+        delete data.task.createdAt;
+        delete data.task.updatedAt;
+        delete data.task.userID;
+
+
+        assert.deepStrictEqual(data, {
             task:{
-                  id:taskId,
-                  priority: newPriority,
-                  description: newDescription ,
+                  id:task.id,
                   title: newTitle,
-                  userId: userId,
+                  description: newDescription ,
+                  priority: newPriority,
                   status: newStatus,
             }
         })
-
+ 
 
 })

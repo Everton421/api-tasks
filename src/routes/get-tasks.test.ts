@@ -9,7 +9,7 @@ import { faker } from "@faker-js/faker";
 import { generateJwt } from "../hooks/generate-jwt.ts";
 
  
-    test.it(" get tesks", async ()=>{
+    test.it(" [ TESTE ] get tesks", async ()=>{
     
             await server.ready();
 
@@ -19,6 +19,7 @@ import { generateJwt } from "../hooks/generate-jwt.ts";
                 const description = faker.lorem.lines({min:1 , max:2});
 
                 const token = generateJwt(user)  ;
+
 
         const task = await makeTask({
             description: description,
@@ -36,7 +37,7 @@ import { generateJwt } from "../hooks/generate-jwt.ts";
          assert.strictEqual(response.status, 200);
 
           
-         assert.strictEqual( response.body, 
+         assert.deepStrictEqual( response.body, 
                 {
                    tasks: [
                         {

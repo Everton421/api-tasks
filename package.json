@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node --experimental-strip-types src/server.ts",
     "dev": "node --env-file .env --watch --experimental-strip-types src/server.ts",
     "db:migrate": "drizzle-kit migrate",
@@ -11,7 +10,9 @@
     "db:seed": "tsx --env-file .env src/database/seed.ts",
     "teste:migrate": "dotenv -e .env.test -- drizzle-kit migrate",
     "teste:push": "dotenv -e .env.test -- drizzle-kit push --force",
-    "teste:task": "node --env-file=.env.test --experimental-strip-types  src/routes/get-tasks.test.ts"
+    "teste:task": "node --env-file=.env.test --experimental-strip-types  src/routes/get-tasks.test.ts",
+    "test": "node  --env-file=.env.test --experimental-strip-types  --test" 
+
   },
   "keywords": [],
   "author": "",

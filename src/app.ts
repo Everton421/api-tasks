@@ -11,7 +11,7 @@ import cors from '@fastify/cors'
 import { LoginRoute } from "./routes/login.ts";
 
  const server = fastify({
-   logger:{
+ /*  logger:{
       transport:{
          target:'pino-pretty',
          options:{
@@ -19,7 +19,7 @@ import { LoginRoute } from "./routes/login.ts";
          ignore: 'pid hostname',   
          },
       } ,
-      }
+      }*/
    }
   ).withTypeProvider<ZodTypeProvider>()
 
