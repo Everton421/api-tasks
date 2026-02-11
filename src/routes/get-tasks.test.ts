@@ -27,7 +27,7 @@ import { generateJwt } from "../hooks/generate-jwt.ts";
             title: title,
             userId: user.id
          })
-
+         
 
          const response = await request(server.server)
          .get(`/tasks?search=${title}`).set('authorization', `${token}` );
@@ -46,8 +46,8 @@ import { generateJwt } from "../hooks/generate-jwt.ts";
                           status: task.status,
                           priority: task.priority,
                           userId: task.userId,
-                          createdAt: `${String(task.createdAt)}`,
-                          updatedAt: `${String(task.updatedAt)}`   
+                          createdAt: task.createdAt.toISOString(),
+                          updatedAt: task.updatedAt.toISOString()
                         }   
                     ],
                     total: 1
