@@ -44,7 +44,6 @@ export const putTasks:FastifyPluginAsyncZod = async ( server ) =>{
     },  
     async ( request, reply)=>{
         const taskId = request.params.id;
-        
         const verifiTask = await db.select().from(tasks).where(  eq(tasks.id, taskId))
         
         if(verifiTask.length > 0 ){

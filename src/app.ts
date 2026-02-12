@@ -9,6 +9,7 @@ import { createTasks } from "./routes/create-tasks.ts";
  
 import cors from '@fastify/cors'
 import { LoginRoute } from "./routes/login.ts";
+import { createUser } from "./routes/create-user.ts";
 
  const server = fastify({
  /*  logger:{
@@ -56,6 +57,6 @@ server.register(getTasks)
 server.register(putTasks)
 server.register(createTasks)
 server.register(LoginRoute)
-
+server.register(createUser)
  export { server }
   
